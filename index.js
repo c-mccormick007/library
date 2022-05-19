@@ -70,7 +70,6 @@ let displayBooks = () => {
         const currentTarget = e.target.parentNode
         console.log(currentTarget);
         console.log(myLibrary);
-        //myLibrary.splice(, 1)
         currentTarget.remove();
     })
     div.appendChild(deleteButton);
