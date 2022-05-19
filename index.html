@@ -8,23 +8,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form>
-        <label for="book">Book name:</label>
-        <input type="text" name="book" id="book">
-        <label for="author">Author:</label>
-        <input type="text" name="author" id="author">
-        <label for="pages">Pages:</label>
-        <input for="pages" name="pages" id="pages"></input>
-        <button type="submit">Submit</button>
-    </form>
+
+    <button class="newBook">New Book</button>
+    <div class="modal" id="modal" tabindex="0">
+        <form id="bookForm">
+            <label for="book">Book name:</label>
+            <input type="text" name="book" id="book">
+            <label for="author">Author:</label>
+            <input type="text" name="author" id="author">
+            <label for="pages">Pages:</label>
+            <input for="pages" name="pages" id="pages"></input>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 
         <div id="bookCards">
-            <div class="card">
-                <div class="bookTitle">Asdfghjkl</div>
-                <div class="author">Stephen Hawking</div>
-                <div class="pages">345</div>
-                <div class="read">true</div>
-            </div>
         </div>
     <script src="index.js"></script>
 </body>
