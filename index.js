@@ -65,7 +65,7 @@ let displayBooks = () => {
     let childRead = document.createElement("button");
     childRead.textContent = myLibrary[bookNum].isRead;
     childRead.classList.add("read");
-    childRead.textContent = "Read";
+    childRead.textContent = "Not Read";
     childRead.addEventListener('click', (e) => {
         const currentTarget = e.target.parentNode;
         let name = currentTarget.firstChild.textContent;
@@ -102,10 +102,12 @@ function checkRead(name, element){
         myLibrary[index].isRead = false;
         console.log(myLibrary[index])
         element.classList.remove("greenRead");
+        element.textContent = "Not Read";
     }else{
         myLibrary[index].isRead = true;
         console.log(myLibrary[index])
         element.classList.add("greenRead");
+        element.textContent = "Read";
     }
 
 }
