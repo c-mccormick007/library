@@ -36,7 +36,7 @@ form.addEventListener('submit', () => {
     addBookToLibrary(form[0].value, form[1].value, form[2].value);
     displayBooks();
     modal.classList.remove('modal-visible');
-    
+    console.log(myLibrary);;
 })
 
 let bookNum = 0;
@@ -59,23 +59,45 @@ let displayBooks = () => {
     childPages.textContent = myLibrary[bookNum].pages;
     childPages.classList.add("pages");
     div.appendChild(childPages);
-    let childRead = document.createElement("div");
+    let childRead = document.createElement("button");
     childRead.textContent = myLibrary[bookNum].isRead;
     childRead.classList.add("read");
+    childRead.textContent = "Read";
+    childRead.addEventListener('click', (e) => {
+        const currentTarget = e.target.parentNode
+        let name = currentTarget.firstChild.textContent
+        checkRead(name);
+    })
     div.appendChild(childRead);
     let deleteButton = document.createElement("button");
     deleteButton.textContent = "Remove";
     deleteButton.setAttribute("data-id", bookNum);
     deleteButton.addEventListener('click', (e) => {
         const currentTarget = e.target.parentNode
-        console.log(currentTarget);
-        console.log(myLibrary);
+        let name = currentTarget.firstChild.textContent
         currentTarget.remove();
+        removeBook(name);
+        bookNum--;
     })
     div.appendChild(deleteButton);
     bookNum++;
 }
 
-function removeBook(array, position){
-    array.splice(position);
+function removeBook(name){
+    let index = myLibrary.findIndex( book => book.bookName == name)
+    myLibrary.splice(index,1);
+    console.log(myLibrary);
+}
+
+function checkRead(name){
+    let index = myLibrary.findIndex( book => book.bookName == name)
+    console.log(index)
+    if (myLibrary[index].isRead == true){
+        myLibrary[index].isRead = false;
+        console.log(myLibrary[index])
+    }else{
+        myLibrary[index].isRead = true;
+        console.log(myLibrary[index])
+    }
+
 }
