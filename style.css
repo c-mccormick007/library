@@ -16,14 +16,67 @@ body {
 }
 
 .card {
-    border: 3px solid;
     width: 300px;
     height: 300px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr .2fr;
+    grid-template-rows: .5fr 1fr 1fr 1fr 1fr;
+    margin: 30px;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    align-content: center;
+    background-color: #f7f7f7;
+}
+
+.card div {
+    justify-self: center;
+}
+
+.delete {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    border: none;
+    align-self: center;
+    justify-self: center;
+    border: 2px solid rgba(129, 129, 129, 0.5);
+    border-radius: 4px;
+}
+
+.bookName {
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+}
+
+.author {
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+}
+
+.pages {
+    grid-column: 1 / 4;
+    grid-row: 4 / 5;
+}
+
+.read {
+    grid-row: 5 / 6;
+    grid-column: 1 / 4;
+    justify-self: center;
+    width: 100px;
+    height: 30px;
+    border: none;
+}
+
+.greenRead {
+    background-color: greenyellow;
+}
+
+.read:hover, .delete:hover {
+    background-color: rgb(202, 202, 202);
+    cursor: pointer;
+}
+.greenRead:hover {
+    background-color: rgb(145, 216, 39);
+    cursor: pointer;
 }
 
 .modal {

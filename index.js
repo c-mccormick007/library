@@ -37,6 +37,9 @@ form.addEventListener('submit', () => {
     displayBooks();
     modal.classList.remove('modal-visible');
     console.log(myLibrary);;
+    for (i = 0; i <= 2; i++){
+        form[i].value = "";
+    }
 })
 
 let bookNum = 0;
@@ -49,14 +52,14 @@ let displayBooks = () => {
     document.getElementById("bookCards").appendChild(div);
     let childName = document.createElement("div");
     childName.classList.add("bookName");
-    childName.textContent = myLibrary[bookNum].bookName;
+    childName.textContent = `${myLibrary[bookNum].bookName}`;
     div.appendChild(childName);
     let childAuthor = document.createElement("div");
     childAuthor.classList.add("author");
-    childAuthor.textContent = myLibrary[bookNum].author;
+    childAuthor.textContent = `${myLibrary[bookNum].author}`;
     div.appendChild(childAuthor);
     let childPages = document.createElement("div");
-    childPages.textContent = myLibrary[bookNum].pages;
+    childPages.textContent = `${myLibrary[bookNum].pages}`;
     childPages.classList.add("pages");
     div.appendChild(childPages);
     let childRead = document.createElement("button");
@@ -64,17 +67,20 @@ let displayBooks = () => {
     childRead.classList.add("read");
     childRead.textContent = "Read";
     childRead.addEventListener('click', (e) => {
-        const currentTarget = e.target.parentNode
-        let name = currentTarget.firstChild.textContent
-        checkRead(name);
+        const currentTarget = e.target.parentNode;
+        let name = currentTarget.firstChild.textContent;
+        let button = e.target;
+        console.log(button);
+        checkRead(name, button);
     })
     div.appendChild(childRead);
     let deleteButton = document.createElement("button");
-    deleteButton.textContent = "Remove";
+    deleteButton.textContent = "x";
+    deleteButton.classList.add("delete");
     deleteButton.setAttribute("data-id", bookNum);
     deleteButton.addEventListener('click', (e) => {
-        const currentTarget = e.target.parentNode
-        let name = currentTarget.firstChild.textContent
+        const currentTarget = e.target.parentNode;
+        let name = currentTarget.firstChild.textContent;
         currentTarget.remove();
         removeBook(name);
         bookNum--;
@@ -89,15 +95,17 @@ function removeBook(name){
     console.log(myLibrary);
 }
 
-function checkRead(name){
+function checkRead(name, element){
     let index = myLibrary.findIndex( book => book.bookName == name)
-    console.log(index)
+    console.log(name)
     if (myLibrary[index].isRead == true){
         myLibrary[index].isRead = false;
         console.log(myLibrary[index])
+        element.classList.remove("greenRead");
     }else{
         myLibrary[index].isRead = true;
         console.log(myLibrary[index])
+        element.classList.add("greenRead");
     }
 
 }
