@@ -49,3 +49,18 @@ body {
     border: 1px solid #555;
     border-radius: 3px;
 }
+
+.header {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headertext {
+    padding-left: 30px;
+}
+
+.newBook {
+    margin-right: 30px;
+}
