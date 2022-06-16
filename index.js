@@ -3,12 +3,14 @@ console.log("connected");
 let myLibrary = [];
 let id = 1;
 
-function Book(name, author, pages){
-    this.bookName = name;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = false;
-    this.id = id;
+class Book {
+    constructor(name, author, pages){
+        this.bookName = name;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = false;
+        this.id = id;
+    }
 }
 
 let addBookToLibrary = (name, author, pages) => {
